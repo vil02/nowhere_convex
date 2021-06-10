@@ -13,91 +13,30 @@
 
 \usepackage{hyperref}
 
-
-\newcommand{\C}{\mathbb{C}}
 \newcommand{\R}{\mathbb{R}}
-\newcommand{\Q}{\mathbb{Q}}
 \newcommand{\N}{\mathbb{N}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\K}{\mathbb{K}}
 
-\newcommand{\D}{\mathrm{D}}
 \newcommand{\dd}{\,\mathrm{d}}
-\newcommand{\pder}[2]{\frac{\partial #1}{\partial #2}}
-\newcommand{\pdder}[3]{\frac{\partial^2 #1}{\partial #2 \partial #3}}
-
-\newcommand{\pddder}[4]{\frac{\partial^2 #1}{\partial #2 \partial #3 \partial #4}}
-\newcommand{\pdersimple}[2]{#1_{#2}}
-\newcommand{\pDer}[2]{\partial_{#2}\left( #1 \right)}
 
 \newcommand{\dprime}{{\prime\prime}}
-\newcommand{\tprime}{{\prime\prime\prime}}
-
-  
-\newcommand{\der}[2]{\frac{\dd #1}{ \dd #2}}
-\newcommand{\grad}{\raisebox{2pt}{$\mathop{}\!\mathbin\bigtriangledown$}\raisebox{-2pt}{$ $}}
-\newcommand*\Laplace{\mathop{}\!\mathbin\bigtriangleup}
-\newcommand{\bd}{\partial}
 \renewcommand{\leq}{\leqslant}
 \renewcommand{\geq}{\geqslant}
-\newcommand{\id}{\mathrm{Id}}
-\newcommand{\I}{\mathtt{i}}
 \newcommand{\mapto}{\longmapsto}
 \newcommand{\convto}[2]{\xrightarrow[#2]{#1}}
 
-
-\let\oldsqrt\sqrt
-\def\sqrt{\mathpalette\DHLhksqrt}
-\def\DHLhksqrt#1#2{%
-\setbox0=\hbox{$#1\oldsqrt{#2\,}$}\dimen0=\ht0
-\advance\dimen0-0.2\ht0
-\setbox2=\hbox{\vrule height\ht0 depth -\dimen0}%
-{\box0\lower0.4pt\box2}}
-
-\renewcommand{\L}{\mathcal{L}}
 \newcommand{\ContClass}{\mathcal{C}}
 
-
 \newcommand{\define}[1]{\textit{#1}}
-
-\newcommand{\cl}[1]{\overline{#1}}
-%\newcommand{\diam}{\mathrm{diam}}
-\newcommand{\lin}{\mathrm{lin}\,}
-
-\newcommand{\norm}[1]{\left\| #1 \right\|}
 \newcommand{\abs}[1]{\left| #1 \right|}
-\newcommand{\innerprod}[2]{\left<#1, #2\right>}
-\newcommand{\paren}[1]{\! \left( #1 \right) }
-\newcommand{\set}[1]{ \! \left\{ #1 \right\} }  %13.02.2015
-\newcommand{\bracket}[1]{\! \left[ #1 \right] }  %13.02.2015
+\newcommand{\paren}[1]{\! \left( #1 \right)}
+\newcommand{\bracket}[1]{\! \left[ #1 \right]}
 
-\newcommand{\codim}{\mathrm{codim\,}}
-\renewcommand{\ker}{\mathtt{ker\,}}
-\newcommand{\im}{\mathtt{im\,}}
-
-\newcommand{\ball}[3]{\mathrm{B}_{#3}\left(#1,\, #2\right)}
-\newcommand{\clball}[3]{\overline{\mathrm{B}_{#3}\left(#1,\, #2\right)}}
-
-\newcommand{\Dom}{\mathrm{Dom}}
-\newcommand{\dual}{*}
-
-\newcommand{\tr}{\mathrm{tr}}
-
-
-\renewcommand{\Re}{\mathrm{Re}\,}
-\renewcommand{\Im}{\mathrm{Im}\,}
-\newcommand{\F}{\mathcal{F}}
-
-\newcommand{\parD}{\mathtt{parD}}
 
 %\newcommand{\displaybeginfileinfo}{{\tiny \{\footnote{Beginning of the file ``\urlstyle{tt}\expandafter\nolinkurl\expandafter{\currfilename}'' \pdffilemoddate{\currfilename}}\}\/}}
 %\newcommand{\displayendfileinfo}{{\tiny \{\footnote{End of the file ``\urlstyle{tt}\expandafter\nolinkurl\expandafter{\currfilename}''}\}\/}}
 \newcommand{\displaybeginfileinfo}{}
 \newcommand{\displayendfileinfo}{}
 
-
-\newcommand{\colvectwo}[2]{\begin{pmatrix}#1\\#2\end{pmatrix}}
-\newcommand{\convolution}{\ast}
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}[theorem]{Lemma}
