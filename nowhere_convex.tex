@@ -28,8 +28,8 @@
 
 \newcommand{\define}[1]{\textit{#1}}
 \newcommand{\abs}[1]{\left| #1 \right|}
-\newcommand{\paren}[1]{\! \left( #1 \right)}
-\newcommand{\bracket}[1]{\! \left[ #1 \right]}
+\newcommand{\paren}[1]{\! \left(#1 \right)}
+\newcommand{\bracket}[1]{\! \left[#1 \right]}
 
 
 %\newcommand{\displaybeginfileinfo}{{\tiny \{\footnote{Beginning of the file ``\urlstyle{tt}\expandafter\nolinkurl\expandafter{\currfilename}'' \pdffilemoddate{\currfilename}}\}\/}}
@@ -57,10 +57,16 @@
 
 \begin{document}
 \noindent Piotr Idzik \hfill \today \\
-\displaybeginfileinfo
-In this note we will construct (cf. formulas \eqref{eq::definition_of_d_and_f}) an example of a positive, strictly increasing, continuously differentiable function $d \colon \left[0, \infty \right) \to \left[0, \infty \right)$, bounded from above by a convex function $f\colon\left[0, \infty \right) \to \left[0, \infty \right)$, $f\paren{0} = 0$, such that the function $d$ is not convex on any interval $I \subseteq \left[0, \infty \right)$.
-Such considerations are interesting from the point of view of \cite[p. 167]{Levandosky1998}.
-It is (implicitly) stated there, that if a decreasing function $\widetilde{d} \geq 0$ is bounded from above by a convex function $\widetilde{f}$ vanishing at some point $b > 0$, then the function $\widetilde{d}$ is convex on some interval arbitrary close to $b$.
+\displaybeginfileinfo{}
+In this note we will construct (cf.\ formulas~\eqref{eq::definition_of_d_and_f}) an example of
+a positive, strictly increasing, continuously differentiable function $d \colon \left[0, \infty \right) \to \left[0, \infty \right)$,
+bounded from above by a convex function $f\colon\left[0, \infty \right) \to \left[0, \infty \right)$, $f\paren{0} = 0$,
+such that the function $d$ is not convex on any interval $I \subseteq \left[0, \infty \right)$.
+Such considerations are interesting from the point of view of~\cite[p. 167]{Levandosky1998}.
+It is (implicitly) stated there, that if a decreasing function
+$\widetilde{d} \geq 0$ is bounded from above by a convex function $\widetilde{f}$
+vanishing at some point $b > 0$,
+then the function $\widetilde{d}$ is convex on some interval arbitrary close to $b$.
 After considering the mappings
 \begin{equation*}
     d\paren{x} =  \widetilde{d}\paren{b-x}, \ f\paren{x} =  \widetilde{f}\paren{b-x} \quad \paren{x \in \bracket{0, b}}, \\
@@ -71,19 +77,19 @@ We will use the following results
 \begin{theorem}
     There exists a continuous, bounded and nowhere differentiable function $w \colon \R \to \R$.
 \end{theorem}
-Example of such function can be found in \cite[Example 8, p. 38]{gelbaum1964counterexamples}.
+Example of such function can be found in~\cite[Example 8, p. 38]{gelbaum1964counterexamples}.
  
 \begin{theorem} \label{thm::convex_monotone_der}
     If the function $g$ is convex in an interval $\paren{a, b}$, then $g$ is continuous in $\paren{a, b}$.
     Moreover, $g^\prime$ exists except at most in a countable set and is monotone increasing.
 \end{theorem}
-The proof of above Theorem can be found in \cite[Theorem 7.40, p. 120]{wheeden1977measure}.
+The proof of above Theorem can be found in~\cite[Theorem 7.40, p. 120]{wheeden1977measure}.
 
 \begin{theorem} \label{thm::monotone_diff_ae}
     Let $g \colon \paren{a, b} \to \R$ be monotone increasing.
     Then the function $g$ has a measurable, non-negative derivative $g^\prime$ almost everywhere in $\paren{a, b}$.
 \end{theorem}
-For the proof of the above we refer to \cite[Theorem 7.21, page 111]{wheeden1977measure}.
+For the proof of the above we refer to~\cite[Theorem 7.21, page 111]{wheeden1977measure}.
 
 
 Consider $\alpha \geq 0$ and let $w \colon \R \to \bracket{0, 1}$ be a continuous, nowhere differentiable function.
@@ -124,7 +130,7 @@ Define the functions $d, f \colon \left[0, \infty\right) \to \R$ as follows
 \end{proof}
  
 \begin{proposition} \label{prop::d_is_C1}
-    The function $d$ is continuously differentiable and if $\alpha>1$ then $d^\dprime\paren{0} = 0$(\footnote{here we consider $d^\dprime\paren{0}$ as the limit $\lim_{h \to 0^+} \frac{d^\prime\paren{h} - d^\prime\paren{0}}{h}$.}).
+    The function $d$ is continuously differentiable and if $\alpha>1$ then $d^\dprime\paren{0} = 0$ (\footnote{here we consider $d^\dprime\paren{0}$ as the limit $\lim_{h \to 0^+} \frac{d^\prime\paren{h} - d^\prime\paren{0}}{h}$.}).
 \end{proposition}
 \begin{proof}
     Observe that $d^\prime\paren{x} = x^\alpha w\paren{x}$ $\paren{x \in \left[0, \infty\right)}$.
@@ -149,7 +155,7 @@ Define the functions $d, f \colon \left[0, \infty\right) \to \R$ as follows
       \end{split}
     \end{align}
 
-    By our assumption the quotient of the left hand side of \eqref{eq::prop::d_prime_is_not_differentiable_quotient} converges to $d^\dprime\paren{x}$ as $h \to 0$.
+    By our assumption the quotient of the left hand side of~\eqref{eq::prop::d_prime_is_not_differentiable_quotient} converges to $d^\dprime\paren{x}$ as $h \to 0$.
     By the continuity of the function $w$ and and differentiability of the function $\paren{0, \infty} \ni s \mapto s^\alpha \in \paren{0, \infty}$, we get that the limit $\lim_{h \to 0} \frac{w\paren{x+h}-w\paren{x}}{h}$ exists.
     Therefore the function $w$ is differentiable at point $x$.
     Contradiction.
@@ -170,7 +176,7 @@ Define the functions $d, f \colon \left[0, \infty\right) \to \R$ as follows
     \end{equation*}
     Since $d^\prime \geq 0$, we have that $d^\prime\paren{s} = 0$ for almost all $s \in \left[a, b\right]$.
     By the continuity of the function $d^\prime$, we have that $d^\prime\paren{s} = 0$ $\paren{s \in  \left[a, b\right]}$.
-    Hence, the function $d^\prime$ is differentiable on the interval $\paren{a, b}$, which gives a contradiction (cf. Proposition \ref{prop::d_prime_is_not_differentiable}).
+    Hence, the function $d^\prime$ is differentiable on the interval $\paren{a, b}$, which gives a contradiction (cf.\ Proposition~\ref{prop::d_prime_is_not_differentiable}).
 \end{proof}
 
 \begin{proposition} \label{d_is_non_convex_on_any_interval}
@@ -178,13 +184,13 @@ Define the functions $d, f \colon \left[0, \infty\right) \to \R$ as follows
 \end{proposition}
 \begin{proof}
     Suppose that there exists an interval $I \subseteq \left[0, \infty \right)$ such that the function $d_{|I}$ is convex.
-    Theorem \ref{thm::convex_monotone_der} implies that the function $d^\prime$ is monotone increasing.
-    Therefore, by Theorem \ref{thm::convex_monotone_der} the function $d^\prime$ is differentiable almost everywhere (with respect to Leagues measure) on $I$.
-    This gives the contradiction together with Proposition \ref{prop::d_prime_is_not_differentiable}.
+    Theorem~\ref{thm::convex_monotone_der} implies that the function $d^\prime$ is monotone increasing.
+    Therefore, by Theorem~\ref{thm::convex_monotone_der} the function $d^\prime$ is differentiable almost everywhere (with respect to Leagues measure) on $I$.
+    This gives the contradiction together with Proposition~\ref{prop::d_prime_is_not_differentiable}.
 \end{proof}
 
 \begin{remark}
-    Let the functions $d$ and $f$ be as above (cf. formula \eqref{eq::definition_of_d_and_f}) and let $b>0$.
+    Let the functions $d$ and $f$ be as above (cf.\ formula~\eqref{eq::definition_of_d_and_f}) and let $b>0$.
     Consider functions $\widetilde{d}, \widetilde{f} \colon \bracket{0, b} \to \left[0, \infty \right)$ defined as follows:
     \begin{align*}
         \widetilde{d}\paren{x} = d\paren{b-x} \quad \paren{x \in \bracket{0, b}}, \\
@@ -192,17 +198,17 @@ Define the functions $d, f \colon \left[0, \infty\right) \to \R$ as follows
     \end{align*}
     Then
     \begin{itemize}
-        \item $0 \leq \widetilde{d}\paren{x} \leq \widetilde{f}\paren{x}$ for all $x \in \bracket{0, b}$ (cf. Remark \ref{remark::estimate}),
-        \item the function $\widetilde{f}$ is convex on the interval $\bracket{0, b}$ and $\widetilde{f}\paren{0} = \widetilde{f}^\prime\paren{b} = 0$ (cf. Remark \ref{remark::properties_of_f}),
-        \item the function $\widetilde{d}$ is of the class $\ContClass^1$ on $\bracket{0, b}$ (cf. Proposition \ref{prop::d_is_C1}),
-        \item the function $\widetilde{d}$ is strictly decreasing on the interval $\bracket{0, b}$ (cf. Proposition \ref{prop::d_is_increasing}),
-        \item the function $\widetilde{d}$ is not convex on any interval $I \subseteq \bracket{0, b}$ (cf. Proposition \ref{d_is_non_convex_on_any_interval}).
+        \item $0 \leq \widetilde{d}\paren{x} \leq \widetilde{f}\paren{x}$ for all $x \in \bracket{0, b}$ (cf.\ Remark~\ref{remark::estimate}),
+        \item the function $\widetilde{f}$ is convex on the interval $\bracket{0, b}$ and $\widetilde{f}\paren{0} = \widetilde{f}^\prime\paren{b} = 0$ (cf.\ Remark~\ref{remark::properties_of_f}),
+        \item the function $\widetilde{d}$ is of the class $\ContClass^1$ on $\bracket{0, b}$ (cf.\ Proposition~\ref{prop::d_is_C1}),
+        \item the function $\widetilde{d}$ is strictly decreasing on the interval $\bracket{0, b}$ (cf.\ Proposition~\ref{prop::d_is_increasing}),
+        \item the function $\widetilde{d}$ is not convex on any interval $I \subseteq \bracket{0, b}$ (cf.\ Proposition~\ref{d_is_non_convex_on_any_interval}).
     \end{itemize} 
 \end{remark}
 
 \bibliography{bib_data}{}
 \bibliographystyle{plain}
 
-\displayendfileinfo
+\displayendfileinfo{}
 \end{document}
  
