@@ -1,0 +1,45 @@
+name: build_document
+
+on:
+  workflow_dispatch:
+  push:
+    paths-ignore:
+      - 'generated/**'
+
+env:
+  RESULT_PATH: ./generated
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+    - name: Install dependencies
+      run: |
+        sudo apt-get install texlive-latex-extra
+
+    - name: run build script
+      working-directory: ${{github.workspace}}
+      shell: bash
+      run: |
+        ./ubuntu_local_build.sh
+        mkdir -p ${{env.RESULT_PATH}}
+        mv not_convex_with_convex_bound.pdf ${{env.RESULT_PATH}}
+
+    - name: commit result
+      working-directory: ${{github.workspace}}
+      shell: bash
+      run: |
+        git config --global user.name 'build_document_action'
+        git config --global user.email 'vil02@users.noreply.github.com'
+        git add ${{env.RESULT_PATH}}
+        git commit -m "Automated document generation"
+
+    - name: push result
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{secrets.PUSH_TOKEN}}
+
