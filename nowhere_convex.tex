@@ -9,7 +9,7 @@
 \usepackage{lscape}
 
 \usepackage[ddmmyyyy,hhmmss]{datetime}
-\usepackage{currfile}
+\renewcommand{\dateseparator}{.}
 
 \usepackage{hyperref}
 
@@ -32,11 +32,6 @@
 \newcommand{\bracket}[1]{\! \left[#1 \right]}
 
 
-%\newcommand{\displaybeginfileinfo}{{\tiny \{\footnote{Beginning of the file ``\urlstyle{tt}\expandafter\nolinkurl\expandafter{\currfilename}'' \pdffilemoddate{\currfilename}}\}\/}}
-%\newcommand{\displayendfileinfo}{{\tiny \{\footnote{End of the file ``\urlstyle{tt}\expandafter\nolinkurl\expandafter{\currfilename}''}\}\/}}
-\newcommand{\displaybeginfileinfo}{}
-\newcommand{\displayendfileinfo}{}
-
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}[theorem]{Lemma}
@@ -56,8 +51,9 @@
 \makeatother
 
 \begin{document}
-\noindent Piotr Idzik \hfill \today \\
-\displaybeginfileinfo{}
+\noindent Piotr Idzik \hfill ver. \today\ \currenttime
+
+\vspace*{1cm}
 In this note we will construct (cf.\ formulas~\eqref{eq::definition_of_d_and_f}) an example of
 a positive, strictly increasing, continuously differentiable function $d \colon \left[0, \infty \right) \to \left[0, \infty \right)$,
 bounded from above by a convex function $f\colon\left[0, \infty \right) \to \left[0, \infty \right)$, $f\paren{0} = 0$,
@@ -208,7 +204,5 @@ Define the functions $d, f \colon \left[0, \infty\right) \to \R$ as follows
 
 \bibliography{bib_data}{}
 \bibliographystyle{plain}
-
-\displayendfileinfo{}
 \end{document}
  
