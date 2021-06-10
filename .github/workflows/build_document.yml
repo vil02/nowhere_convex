@@ -27,7 +27,7 @@ jobs:
       run: |
         ./ubuntu_local_build.sh
         mkdir -p ${{env.RESULT_PATH}}
-        mv not_convex_with_convex_bound.pdf ${{env.RESULT_PATH}}
+        mv nowhere_convex.pdf ${{env.RESULT_PATH}}
 
     - name: commit result
       working-directory: ${{github.workspace}}
