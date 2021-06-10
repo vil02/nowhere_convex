@@ -1,0 +1,269 @@
+\documentclass[12pt]{article}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{inputenc}
+\usepackage[a4paper, left=2.0cm, right=2.0cm, top=2.0cm, bottom=2.0cm, headsep=0.0cm]{geometry}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{lscape}
+
+\usepackage[ddmmyyyy,hhmmss]{datetime}
+\usepackage{currfile}
+
+\usepackage{hyperref}
+
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+
+\newcommand{\D}{\mathrm{D}}
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\pder}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdder}[3]{\frac{\partial^2 #1}{\partial #2 \partial #3}}
+
+\newcommand{\pddder}[4]{\frac{\partial^2 #1}{\partial #2 \partial #3 \partial #4}}
+\newcommand{\pdersimple}[2]{#1_{#2}}
+\newcommand{\pDer}[2]{\partial_{#2}\left( #1 \right)}
+
+\newcommand{\dprime}{{\prime\prime}}
+\newcommand{\tprime}{{\prime\prime\prime}}
+
+  
+\newcommand{\der}[2]{\frac{\dd #1}{ \dd #2}}
+\newcommand{\grad}{\raisebox{2pt}{$\mathop{}\!\mathbin\bigtriangledown$}\raisebox{-2pt}{$ $}}
+\newcommand*\Laplace{\mathop{}\!\mathbin\bigtriangleup}
+\newcommand{\bd}{\partial}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\newcommand{\id}{\mathrm{Id}}
+\newcommand{\I}{\mathtt{i}}
+\newcommand{\mapto}{\longmapsto}
+\newcommand{\convto}[2]{\xrightarrow[#2]{#1}}
+
+
+\let\oldsqrt\sqrt
+\def\sqrt{\mathpalette\DHLhksqrt}
+\def\DHLhksqrt#1#2{%
+\setbox0=\hbox{$#1\oldsqrt{#2\,}$}\dimen0=\ht0
+\advance\dimen0-0.2\ht0
+\setbox2=\hbox{\vrule height\ht0 depth -\dimen0}%
+{\box0\lower0.4pt\box2}}
+
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\ContClass}{\mathcal{C}}
+
+
+\newcommand{\define}[1]{\textit{#1}}
+
+\newcommand{\cl}[1]{\overline{#1}}
+%\newcommand{\diam}{\mathrm{diam}}
+\newcommand{\lin}{\mathrm{lin}\,}
+
+\newcommand{\norm}[1]{\left\| #1 \right\|}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\innerprod}[2]{\left<#1, #2\right>}
+\newcommand{\paren}[1]{\! \left( #1 \right) }
+\newcommand{\set}[1]{ \! \left\{ #1 \right\} }  %13.02.2015
+\newcommand{\bracket}[1]{\! \left[ #1 \right] }  %13.02.2015
+
+\newcommand{\codim}{\mathrm{codim\,}}
+\renewcommand{\ker}{\mathtt{ker\,}}
+\newcommand{\im}{\mathtt{im\,}}
+
+\newcommand{\ball}[3]{\mathrm{B}_{#3}\left(#1,\, #2\right)}
+\newcommand{\clball}[3]{\overline{\mathrm{B}_{#3}\left(#1,\, #2\right)}}
+
+\newcommand{\Dom}{\mathrm{Dom}}
+\newcommand{\dual}{*}
+
+\newcommand{\tr}{\mathrm{tr}}
+
+
+\renewcommand{\Re}{\mathrm{Re}\,}
+\renewcommand{\Im}{\mathrm{Im}\,}
+\newcommand{\F}{\mathcal{F}}
+
+\newcommand{\parD}{\mathtt{parD}}
+
+%\newcommand{\displaybeginfileinfo}{{\tiny \{\footnote{Beginning of the file ``\urlstyle{tt}\expandafter\nolinkurl\expandafter{\currfilename}'' \pdffilemoddate{\currfilename}}\}\/}}
+%\newcommand{\displayendfileinfo}{{\tiny \{\footnote{End of the file ``\urlstyle{tt}\expandafter\nolinkurl\expandafter{\currfilename}''}\}\/}}
+\newcommand{\displaybeginfileinfo}{}
+\newcommand{\displayendfileinfo}{}
+
+
+\newcommand{\colvectwo}[2]{\begin{pmatrix}#1\\#2\end{pmatrix}}
+\newcommand{\convolution}{\ast}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+
+\makeatletter
+\def\blfootnote{\xdef\@thefnmark{}\@footnotetext}
+\makeatother
+
+\begin{document}
+\noindent Piotr Idzik \hfill \today \\
+\displaybeginfileinfo
+In this note we will construct (cf. formulas \eqref{eq::definition_of_d_and_f}) an example of a positive, strictly increasing, continuously differentiable function $d \colon \left[0, \infty \right) \to \left[0, \infty \right)$, bounded from above by a convex function $f\colon\left[0, \infty \right) \to \left[0, \infty \right)$, $f\paren{0} = 0$, such that the function $d$ is not convex on any interval $I \subseteq \left[0, \infty \right)$.
+Such considerations are interesting from the point of view of \cite[p. 167]{Levandosky1998}.
+It is (implicitly) stated there, that if a decreasing function $\widetilde{d} \geq 0$ is bounded from above by a convex function $\widetilde{f}$ vanishing at some point $b > 0$, then the function $\widetilde{d}$ is convex on some interval arbitrary close to $b$.
+After considering the mappings
+\begin{equation*}
+    d\paren{x} =  \widetilde{d}\paren{b-x}, \ f\paren{x} =  \widetilde{f}\paren{b-x} \quad \paren{x \in \bracket{0, b}}, \\
+\end{equation*}
+one sees that instead of decreasing function $\widetilde{d}$, we can consider increasing function $d$. 
+
+We will use the following results
+\begin{theorem}
+    There exists a continuous, bounded and nowhere differentiable function $w \colon \R \to \R$.
+\end{theorem}
+Example of such function can be found in \cite[Example 8, p. 38]{gelbaum1964counterexamples}.
+ 
+\begin{theorem} \label{thm::convex_monotone_der}
+    If the function $g$ is convex in an interval $\paren{a, b}$, then $g$ is continuous in $\paren{a, b}$.
+    Moreover, $g^\prime$ exists except at most in a countable set and is monotone increasing.
+\end{theorem}
+The proof of above Theorem can be found in \cite[Theorem 7.40, p. 120]{wheeden1977measure}.
+
+\begin{theorem} \label{thm::monotone_diff_ae}
+    Let $g \colon \paren{a, b} \to \R$ be monotone increasing.
+    Then the function $g$ has a measurable, non-negative derivative $g^\prime$ almost everywhere in $\paren{a, b}$.
+\end{theorem}
+For the proof of the above we refer to \cite[Theorem 7.21, page 111]{wheeden1977measure}.
+
+
+Consider $\alpha \geq 0$ and let $w \colon \R \to \bracket{0, 1}$ be a continuous, nowhere differentiable function.
+Define the functions $d, f \colon \left[0, \infty\right) \to \R$ as follows
+\begin{align} \label{eq::definition_of_d_and_f}
+    \begin{split}
+        d\paren{x} & = \int_0^x s^\alpha w\paren{s} \dd s \quad \paren{x \geq 0}, \\
+        f\paren{x} & = \int_0^x s^\alpha \dd s = \frac{x^{\alpha+1}}{\alpha+1} \quad \paren{x \geq 0}.
+    \end{split}
+\end{align}
+ 
+\begin{remark} \label{remark::properties_of_f}
+    The function $f$ is convex and $f\paren{0} = f^\prime\paren{0} = 0$.
+\end{remark}
+ %\begin{proof}
+ % First consider the case $\alpha > 0$.
+ % Note
+ % \begin{equation*}
+ %  f^\prime\paren{x} = x^\alpha, \, f^\dprime\paren{x} = \frac{1}{\alpha} x^{\alpha-1} \quad \paren{x\geq 0}.
+ % \end{equation*}
+ % Since $\alpha>0$, $f^\dprime\paren{x} > 0$ $\paren{x > 0}$ and $f^\dprime\paren{0} = 0$, $f$ is convex.
+ %
+ % If $\alpha = 0$,then $f\paren{x} = x$ $\paren{x \geq 0}$.
+ %\end{proof}
+
+\begin{remark} \label{remark::estimate}
+    The following inequality holds true 
+    \begin{equation*}
+        0 \leq d\paren{x} \leq f\paren{x} \quad \paren{x \geq 0}.
+     \end{equation*}
+\end{remark}
+\begin{proof}
+    Observe that
+    \begin{equation*}
+        0 \leq d^\prime\paren{s} = s^\alpha w\paren{s} \leq s^\alpha = f^\prime\paren{s} \quad \paren{s > 0}.
+    \end{equation*}
+    Integrating above inequality over the set $\bracket{0, x}$ gives the claim.
+\end{proof}
+ 
+\begin{proposition} \label{prop::d_is_C1}
+    The function $d$ is continuously differentiable and if $\alpha>1$ then $d^\dprime\paren{0} = 0$(\footnote{here we consider $d^\dprime\paren{0}$ as the limit $\lim_{h \to 0^+} \frac{d^\prime\paren{h} - d^\prime\paren{0}}{h}$.}).
+\end{proposition}
+\begin{proof}
+    Observe that $d^\prime\paren{x} = x^\alpha w\paren{x}$ $\paren{x \in \left[0, \infty\right)}$.
+    Moreover, we have
+    \begin{equation*}
+        \frac{d^\prime\paren{h} - d^\prime\paren{0}}{h} = \frac{h^\alpha w\paren{\alpha}}{h} \convto{}{h \to 0^+} 0,
+    \end{equation*}
+    for all $\alpha > 1$.
+\end{proof}
+
+ 
+\begin{proposition} \label{prop::d_prime_is_not_differentiable}
+    The function $d^\prime$ is not differentiable for $x>0$.
+ \end{proposition}
+\begin{proof}
+    Suppose the contrary and consider the quotient
+    \begin{align} \label{eq::prop::d_prime_is_not_differentiable_quotient}
+      \begin{split}
+          \frac{d^\prime\paren{x+h} - d^\prime\paren{x}}{h} & = \frac{\paren{x+h}^\alpha w\paren{x+h} - x^\alpha w\paren{x}}{h} \\
+                                                            & = \frac{\paren{x+h}^\alpha w\paren{x+h} - \paren{x+h}^\alpha w\paren{x} + \paren{x+h}^\alpha w\paren{x} - x^\alpha w\paren{x}}{h} \\
+                                                            & = \paren{x+h}^\alpha \frac{w\paren{x+h} - w\paren{x}}{h} + w\paren{x} \frac{\paren{x+h}^\alpha - x^\alpha}{h}
+      \end{split}
+    \end{align}
+
+    By our assumption the quotient of the left hand side of \eqref{eq::prop::d_prime_is_not_differentiable_quotient} converges to $d^\dprime\paren{x}$ as $h \to 0$.
+    By the continuity of the function $w$ and and differentiability of the function $\paren{0, \infty} \ni s \mapto s^\alpha \in \paren{0, \infty}$, we get that the limit $\lim_{h \to 0} \frac{w\paren{x+h}-w\paren{x}}{h}$ exists.
+    Therefore the function $w$ is differentiable at point $x$.
+    Contradiction.
+\end{proof}
+
+\begin{proposition} \label{prop::d_is_increasing}
+    The function $d$ is strictly increasing.
+\end{proposition}
+\begin{proof}
+    Clearly $d^\prime\paren{x} =x^\alpha w\paren{x} \geq 0$ $\paren{x \geq 0}$, therefore
+    \begin{equation*} %\label{eq::d_is_weakly_increasing}
+        d\paren{a} - d\paren{b} = \int^a_b d^\prime\paren{s} \dd s \geq 0 \quad \paren{a \geq b \geq 0}.
+    \end{equation*}
+
+    Suppose that there exist some points $a > b \geq 0$, such that
+    \begin{equation*}
+        0 = d\paren{a} - d\paren{b} = \int^a_b d^\prime\paren{s} \dd s.
+    \end{equation*}
+    Since $d^\prime \geq 0$, we have that $d^\prime\paren{s} = 0$ for almost all $s \in \left[a, b\right]$.
+    By the continuity of the function $d^\prime$, we have that $d^\prime\paren{s} = 0$ $\paren{s \in  \left[a, b\right]}$.
+    Hence, the function $d^\prime$ is differentiable on the interval $\paren{a, b}$, which gives a contradiction (cf. Proposition \ref{prop::d_prime_is_not_differentiable}).
+\end{proof}
+
+\begin{proposition} \label{d_is_non_convex_on_any_interval}
+    The function $d$ is not convex on any of the intervals $I \subseteq \left[0, \infty \right)$.
+\end{proposition}
+\begin{proof}
+    Suppose that there exists an interval $I \subseteq \left[0, \infty \right)$ such that the function $d_{|I}$ is convex.
+    Theorem \ref{thm::convex_monotone_der} implies that the function $d^\prime$ is monotone increasing.
+    Therefore, by Theorem \ref{thm::convex_monotone_der} the function $d^\prime$ is differentiable almost everywhere (with respect to Leagues measure) on $I$.
+    This gives the contradiction together with Proposition \ref{prop::d_prime_is_not_differentiable}.
+\end{proof}
+
+\begin{remark}
+    Let the functions $d$ and $f$ be as above (cf. formula \eqref{eq::definition_of_d_and_f}) and let $b>0$.
+    Consider functions $\widetilde{d}, \widetilde{f} \colon \bracket{0, b} \to \left[0, \infty \right)$ defined as follows:
+    \begin{align*}
+        \widetilde{d}\paren{x} = d\paren{b-x} \quad \paren{x \in \bracket{0, b}}, \\
+        \widetilde{f}\paren{x} = f\paren{b-x} \quad \paren{x \in \bracket{0, b}}.
+    \end{align*}
+    Then
+    \begin{itemize}
+        \item $0 \leq \widetilde{d}\paren{x} \leq \widetilde{f}\paren{x}$ for all $x \in \bracket{0, b}$ (cf. Remark \ref{remark::estimate}),
+        \item the function $\widetilde{f}$ is convex on the interval $\bracket{0, b}$ and $\widetilde{f}\paren{0} = \widetilde{f}^\prime\paren{b} = 0$ (cf. Remark \ref{remark::properties_of_f}),
+        \item the function $\widetilde{d}$ is of the class $\ContClass^1$ on $\bracket{0, b}$ (cf. Proposition \ref{prop::d_is_C1}),
+        \item the function $\widetilde{d}$ is strictly decreasing on the interval $\bracket{0, b}$ (cf. Proposition \ref{prop::d_is_increasing}),
+        \item the function $\widetilde{d}$ is not convex on any interval $I \subseteq \bracket{0, b}$ (cf. Proposition \ref{d_is_non_convex_on_any_interval}).
+    \end{itemize} 
+\end{remark}
+
+\bibliography{bib_data}{}
+\bibliographystyle{plain}
+
+\displayendfileinfo
+\end{document}
+ 
