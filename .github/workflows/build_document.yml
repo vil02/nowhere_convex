@@ -29,7 +29,8 @@ jobs:
         bash ubuntu_local_build.sh
         mkdir -p ${{env.RESULT_PATH}}
         mv nowhere_convex.pdf ${{env.RESULT_PATH}}
-
+    - name: branch: ${{ github.ref }}
+      run: git status
     - name: commit result
       working-directory: ${{github.workspace}}
       shell: bash
@@ -43,4 +44,5 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{secrets.PUSH_TOKEN}}
+        branch: ${{github.ref}}
 
