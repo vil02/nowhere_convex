@@ -3,6 +3,8 @@ name: Check Markdown links
 on:
   workflow_dispatch:
   push:
+  schedule:
+    - cron: '15 */3 * * *'  
 
 jobs:
   markdown-link-check:
