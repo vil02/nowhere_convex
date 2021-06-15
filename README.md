@@ -1,5 +1,6 @@
 [![build_document](https://github.com/vil02/nowhere_convex/actions/workflows/build_document.yml/badge.svg)](https://github.com/vil02/nowhere_convex/actions/workflows/build_document.yml)
 [![latex_linter_check](https://github.com/vil02/nowhere_convex/actions/workflows/chktex.yml/badge.svg)](https://github.com/vil02/nowhere_convex/actions/workflows/chktex.yml)
+[![qpdf_check](https://github.com/vil02/nowhere_convex/actions/workflows/qpdf_check.yml/badge.svg)](https://github.com/vil02/nowhere_convex/actions/workflows/qpdf_check.yml)
 
 [This file](./generated/nowhere_convex.pdf) contains a construction of a nowhere convex, non-negative, strictly increasing, continuously differentiable function tightly bounded from above by a convex one.
 It also contains a motivation to consider such an object.
