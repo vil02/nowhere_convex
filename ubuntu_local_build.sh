@@ -46,10 +46,16 @@ fi
 
 create_lock
 
-pdflatex -interaction=batchmode -draftmode "$file_name$file_ext"
-bibtex $file_name
-pdflatex -interaction=batchmode -draftmode "$file_name$file_ext"
-pdflatex -interaction=batchmode "$file_name$file_ext"
+{
+    pdflatex -interaction=batchmode -draftmode "$file_name$file_ext" &&
+    bibtex $file_name &&
+    pdflatex -interaction=batchmode -draftmode "$file_name$file_ext" &&
+    pdflatex -interaction=batchmode "$file_name$file_ext"
+} || {
+    remove_lock
+    printf "Error while building document\n"
+    exit 4
+}
 
 remove_lock
 
