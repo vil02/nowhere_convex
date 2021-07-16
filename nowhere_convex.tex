@@ -44,6 +44,7 @@
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{example}[theorem]{Example}
 
+\renewcommand{\GenericWarning}[2]{\GenericError{#1}{#2}{}{This warning has been turned into a fatal error.}}
 
 \makeatletter
 \def\blfootnote{\xdef\@thefnmark{}\@footnotetext}
@@ -66,14 +67,14 @@ After considering the mappings
 \begin{equation*}
     d\paren{x} =  \widetilde{d}\paren{b-x}, \ f\paren{x} =  \widetilde{f}\paren{b-x} \quad \paren{x \in \bracket{0, b}}, \\
 \end{equation*}
-one sees that instead of decreasing function $\widetilde{d}$, we can consider increasing function $d$. 
+one sees that instead of decreasing function $\widetilde{d}$, we can consider increasing function $d$.
 
 We will use the following results
 \begin{theorem}
     There exists a continuous, bounded and nowhere differentiable function $w \colon \R \to \R$.
 \end{theorem}
 Example of such function can be found in~\cite[Example 8, p. 38]{gelbaum1964counterexamples}.
- 
+
 \begin{theorem} \label{thm::convex_monotone_der}
     If the function $g$ is convex in an interval $\paren{a, b}$, then $g$ is continuous in $\paren{a, b}$.
     Moreover, $g^\prime$ exists except at most in a countable set and is monotone increasing.
@@ -95,7 +96,7 @@ Define the functions $d, f \colon \left[0, \infty\right) \to \R$ as follows
         f\paren{x} & = \int_0^x s^\alpha \dd s = \frac{x^{\alpha+1}}{\alpha+1} \quad \paren{x \geq 0}.
     \end{split}
 \end{align}
- 
+
 \begin{remark} \label{remark::properties_of_f}
     The function $f$ is convex and $f\paren{0} = f^\prime\paren{0} = 0$.
 \end{remark}
@@ -111,7 +112,7 @@ Define the functions $d, f \colon \left[0, \infty\right) \to \R$ as follows
  %\end{proof}
 
 \begin{remark} \label{remark::estimate}
-    The following inequality holds true 
+    The following inequality holds true
     \begin{equation*}
         0 \leq d\paren{x} \leq f\paren{x} \quad \paren{x \geq 0}.
      \end{equation*}
@@ -123,7 +124,7 @@ Define the functions $d, f \colon \left[0, \infty\right) \to \R$ as follows
     \end{equation*}
     Integrating above inequality over the set $\bracket{0, x}$ gives the claim.
 \end{proof}
- 
+
 \begin{proposition} \label{prop::d_is_C1}
     The function $d$ is continuously differentiable and if $\alpha>1$ then $d^\dprime\paren{0} = 0$ (\footnote{here we consider $d^\dprime\paren{0}$ as the limit $\lim_{h \to 0^+} \frac{d^\prime\paren{h} - d^\prime\paren{0}}{h}$.}).
 \end{proposition}
@@ -136,7 +137,7 @@ Define the functions $d, f \colon \left[0, \infty\right) \to \R$ as follows
     for all $\alpha > 1$.
 \end{proof}
 
- 
+
 \begin{proposition} \label{prop::d_prime_is_not_differentiable}
     The function $d^\prime$ is not differentiable for $x>0$.
  \end{proposition}
@@ -198,10 +199,9 @@ Define the functions $d, f \colon \left[0, \infty\right) \to \R$ as follows
         \item the function $\widetilde{d}$ is of the class $\ContClass^1$ on $\bracket{0, b}$ (cf.\ Proposition~\ref{prop::d_is_C1}),
         \item the function $\widetilde{d}$ is strictly decreasing on the interval $\bracket{0, b}$ (cf.\ Proposition~\ref{prop::d_is_increasing}),
         \item the function $\widetilde{d}$ is not convex on any interval $I \subseteq \bracket{0, b}$ (cf.\ Proposition~\ref{d_is_non_convex_on_any_interval}).
-    \end{itemize} 
+    \end{itemize}
 \end{remark}
 
 \bibliography{bib_data}{}
 \bibliographystyle{plain}
 \end{document}
- 
