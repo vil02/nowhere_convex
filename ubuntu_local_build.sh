@@ -18,8 +18,7 @@ function is_already_running()
     }
     return "${return_value}"
 }
- 
- 
+
 function create_lock()
 {
     mkdir "${script_lock}" ||
@@ -28,13 +27,13 @@ function create_lock()
         exit 2
     }
 }
- 
-function remove_lock() 
+
+function remove_lock()
 {
     rm -rf "${script_lock}" ||
     {
         printf "Can not remove lock\n"
-        exit 3  
+        exit 3
     }
 }
 
@@ -46,16 +45,15 @@ fi
 
 create_lock
 
+pdflatex -interaction=batchmode -draftmode "$file_name$file_ext" || true
+bibtex $file_name || true
+pdflatex -interaction=batchmode -draftmode "$file_name$file_ext" || true
+
+pdflatex -interaction=batchmode "$file_name$file_ext" ||
 {
-    pdflatex -interaction=batchmode -draftmode "$file_name$file_ext" &&
-    bibtex $file_name &&
-    pdflatex -interaction=batchmode -draftmode "$file_name$file_ext" &&
-    pdflatex -interaction=batchmode "$file_name$file_ext"
-} || {
     remove_lock
     printf "Error while building document\n"
     exit 4
 }
 
 remove_lock
-
