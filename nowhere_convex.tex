@@ -46,11 +46,18 @@
 
 \renewcommand{\GenericWarning}[2]{\GenericError{#1}{#2}{}{This warning has been turned into a fatal error.}}
 
-\makeatletter
-\def\blfootnote{\xdef\@thefnmark{}\@footnotetext}
-\makeatother
+\newcommand\blfootnote[1]{%
+    \bgroup{}
+    \renewcommand\thefootnote{\fnsymbol{footnote}}%
+    \renewcommand\thempfootnote{\fnsymbol{mpfootnote}}%
+    \footnotetext[0]{#1}%
+    \egroup{}
+}
 
 \begin{document}
+\blfootnote{Repository with the most recent version of
+    \href{https://raw.githubusercontent.com/vil02/nowhere_convex/master/generated/nowhere_convex.pdf}{this document}:
+    \url{https://github.com/vil02/nowhere_convex}}
 \noindent Piotr Idzik \hfill ver. \today\ \currenttime{}
 
 \vspace*{1cm}
