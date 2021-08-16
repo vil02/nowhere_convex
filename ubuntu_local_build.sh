@@ -6,8 +6,9 @@ set -u
 script_lock=$(dirname "${0}")/"build_lock_dir"
 readonly script_lock
 
-declare -r file_name="nowhere_convex"
-declare -r file_ext=".tex"
+declare -r core_name="nowhere_convex"
+declare -r tex_file="${core_name}.tex"
+declare -r pdf_file="${core_name}.pdf"
 
 function is_already_running()
 {
@@ -45,15 +46,29 @@ fi
 
 create_lock
 
-pdflatex -interaction=batchmode -draftmode "$file_name$file_ext" || true
-bibtex $file_name || true
-pdflatex -interaction=batchmode -draftmode "$file_name$file_ext" || true
-
-pdflatex -interaction=batchmode "$file_name$file_ext" ||
+rm -f ${pdf_file} ||
 {
     remove_lock
-    printf "Error while building document\n"
+    printf "Can not remove the old result file\n"
     exit 4
 }
+
+pdflatex -interaction=batchmode -draftmode "$tex_file" || true
+bibtex $core_name || true
+pdflatex -interaction=batchmode -draftmode "$tex_file" || true
+
+pdflatex -interaction=batchmode "$tex_file" ||
+{
+    remove_lock
+    printf "Error while building document (LaTeX)\n"
+    exit 5
+}
+
+if ! [ -e ${pdf_file} ]
+then
+  remove_lock
+  printf "Error while building document (document not created)\n"
+  exit 6
+fi
 
 remove_lock
