@@ -8,7 +8,7 @@ on:
       - '.github/workflows/qpdf_check.yml'
 
 jobs:
-  build:
+  qpdf_check:
     runs-on: ubuntu-latest
 
     steps:

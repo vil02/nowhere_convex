@@ -6,7 +6,7 @@ on:
     paths-ignore:
       - 'generated/**'
 jobs:
-  build:
+  latex_linter_check:
     runs-on: ubuntu-latest
 
     steps:

@@ -10,7 +10,7 @@ env:
   RESULT_PATH: ./generated
 
 jobs:
-  build:
+  build_document:
     runs-on: ubuntu-latest
 
     steps:
