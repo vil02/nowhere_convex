@@ -7,7 +7,7 @@ on:
     - cron: '35 */3 * * *'
 
 jobs:
-  all_url_check:
+  run_lychee:
     runs-on: ubuntu-latest
 
     steps:
