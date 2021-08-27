@@ -1,7 +1,6 @@
 #!/bin/bash
 
-set -e
-set -u
+set -euo pipefail
 
 script_lock=$(dirname "${0}")/"build_lock_dir"
 readonly script_lock
