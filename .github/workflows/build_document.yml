@@ -1,5 +1,7 @@
+---
 name: build_document
 
+# yamllint disable-line rule:truthy
 on:
   workflow_dispatch:
   push:
@@ -7,34 +9,38 @@ on:
       - 'generated/**'
 
 env:
-  RESULT_PATH: ./generated
+  result_folder: ./generated
 
 jobs:
   build_document:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-      with:
-        token: ${{secrets.PUSH_TOKEN}}
-    - name: Install dependencies
-      run: |
-        sudo apt-get install texlive-latex-extra
-    - name: run build script
-      working-directory: ${{github.workspace}}
-      shell: bash
-      run: |
-        bash ubuntu_local_build.sh
-        mkdir -p ${{env.RESULT_PATH}}
-        mv nowhere_convex.pdf ${{env.RESULT_PATH}}
-    - name: status at ${{github.ref}}
-      run: git status
-    - name: commit and push result
-      working-directory: ${{github.workspace}}
-      shell: bash
-      run: |
-        git config --global user.name 'build_document_action'
-        git config --global user.email 'vil02@users.noreply.github.com'
-        git add ${{env.RESULT_PATH}}
-        git commit -m "Automated document generation"
-        git push
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          token: ${{secrets.PUSH_TOKEN}}
+      - name: Install dependencies
+        run: |
+          sudo apt-get install texlive-latex-extra
+
+      - name: run build script
+        working-directory: ${{github.workspace}}
+        shell: bash
+        run: |
+          ./ubuntu_local_build.sh
+          mkdir -p ${{env.result_folder}}
+          mv nowhere_convex.pdf ${{env.result_folder}}
+      - name: status at ${{github.ref}}
+        run: git status
+
+      - name: commit and push result
+        working-directory: ${{github.workspace}}
+        shell: bash
+        run: |
+          git config --global user.name 'build_document_action'
+          git config --global user.email 'vil02@users.noreply.github.com'
+          git add ${{env.result_folder}}
+          git commit -m "Automated document generation"
+          git push
+...
