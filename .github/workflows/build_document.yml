@@ -32,6 +32,7 @@ jobs:
           if [[ $(find ./*.pdf | wc -l) -ne 1 ]]; then false; fi
           mkdir -p ${{env.result_folder}}
           mv *.pdf ${{env.result_folder}}
+
       - name: status at ${{github.ref}}
         run: git status
 
