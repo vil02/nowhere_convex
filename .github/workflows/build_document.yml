@@ -30,6 +30,7 @@ jobs:
         run: |
           ./ubuntu_local_build.sh
           if [[ $(find ./*.pdf | wc -l) -ne 1 ]]; then false; fi
+          rm -rf ${{env.result_folder}}
           mkdir -p ${{env.result_folder}}
           mv *.pdf ${{env.result_folder}}
 
