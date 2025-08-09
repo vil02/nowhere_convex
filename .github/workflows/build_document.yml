@@ -7,6 +7,9 @@ name: build_document
     paths-ignore:
       - 'generated/**'
 
+permissions:
+  contents: read
+
 jobs:
   build_document:
     runs-on: ubuntu-latest
